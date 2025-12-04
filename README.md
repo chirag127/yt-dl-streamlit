@@ -1,126 +1,69 @@
-# StreamAudio-YouTube-Downloader-Web-App
+# StreamAudio-YouTube-Audio-Extractor-Web-App
 
-![Build Status](https://img.shields.io/github/actions/workflow/status/chirag127/StreamAudio-YouTube-Downloader-Web-App/ci.yml?style=flat-square&label=Build)
-[![Coverage](https://codecov.io/gh/chirag127/StreamAudio-YouTube-Downloader-Web-App/branch/main/graph/badge.svg?style=flat-square)](https://codecov.io/gh/chirag127/StreamAudio-YouTube-Downloader-Web-App)
-[![GitHub Stars](https://img.shields.io/github/stars/chirag127/StreamAudio-YouTube-Downloader-Web-App?style=flat-square)](https://github.com/chirag127/StreamAudio-YouTube-Downloader-Web-App)
-[![License](https://img.shields.io/github/license/chirag127/StreamAudio-YouTube-Downloader-Web-App?style=flat-square)](LICENSE)
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square)
-![Framework](https://img.shields.io/badge/Framework-Streamlit-47d494?style=flat-square)
-[![Ruff Status](https://img.shields.io/badge/Linter-Ruff-8a418b?style=flat-square)](https://github.com/charliermarsh/ruff)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/chirag127/StreamAudio-YouTube-Audio-Extractor-Web-App/ci.yml?label=Build&style=flat-square)
+![Code Coverage](https://img.shields.io/codecov/c/github/chirag127/StreamAudio-YouTube-Audio-Extractor-Web-App?style=flat-square)
+![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square)
+![License](https://img.shields.io/badge/License-CC%20BY--NC%204.0-blueviolet?style=flat-square)
+![GitHub Stars](https://img.shields.io/github/stars/chirag127/StreamAudio-YouTube-Audio-Extractor-Web-App?style=flat-square)
 
+[![Star this Repo](https://img.shields.io/github/stars/chirag127/StreamAudio-YouTube-Audio-Extractor-Web-App?style=social&color=yellow)](https://github.com/chirag127/StreamAudio-YouTube-Audio-Extractor-Web-App/stargazers)
 
-## ⭐️ Star this Repo
+StreamAudio is a robust, high-performance Streamlit web application designed for the deterministic extraction and conversion of audio tracks from YouTube URLs. Utilizing the powerful `yt-dlp` engine under a modern Python modular architecture, this solution offers reliability and maintainability for high-volume media processing tasks.
 
-[<img src="https://img.shields.io/badge/Star%20%E2%98%85%EF%B8%8F%20this%20Repo-blue?style=flat-square&logo=github" alt="Star this Repo">](https://github.com/chirag127/StreamAudio-YouTube-Downloader-Web-App)
+## 🏗️ Architecture Overview
 
-StreamAudio is a high-performance, Streamlit-based web interface providing robust **YouTube audio extraction** capabilities, underpinned by the battle-tested `yt-dlp` library. This project enforces modern Python development standards for maintainability and future-proofing.
+This project adheres to the principles of a **Modular Monolith**, ensuring clear separation between the Presentation Layer (Streamlit UI), Service Layer (Core Logic/yt-dlp wrappers), and Utility Layer (Configuration/Logging). Error handling is deterministic, following the **Apex Zero-Defect Mandate**.
 
-This repository serves as a professional reference implementation for building production-ready data extraction utilities using Python's scientific and web ecosystem.
-
----
-
-### 🌳 Architecture Overview
-
-The architecture follows a clear separation of concerns, typical of a **Modular Monolith**, ensuring the UI layer (Streamlit) remains decoupled from the core business logic (yt-dlp interfacing and data processing).
-
-mermaid
-flowchart TD
-    A[User Interface: Streamlit Web App] -->|HTTP Request| B(Application Controller/Service Layer)
-    B --> C{Core Business Logic: Audio Extraction}
-    C -->|Invokes| D[External Adapter: yt-dlp CLI/Library]
-    D -->|Downloads/Processes| E[(YouTube Source Data)]
-    C --> F(Error Handling & Logging)
-    B --> G[Configuration & State Management]
-    F --> H[System Logs]
+text
+StreamAudio-YouTube-Audio-Extractor-Web-App/
+├── src/
+│   ├── core/                 # Business logic, yt-dlp wrappers
+│   ├── services/
+│   │   └── extractor.py      # Primary audio extraction service
+│   ├── ui/
+│   │   └── app.py            # Streamlit Presentation Layer
+│   └── utils/
+│       └── config.py         # Configuration management
+├── tests/
+│   ├── unit/
+│   └── integration/
+├── .venv/
+├── pyproject.toml            # Dependency management (uv)
+└── README.md
 
 
-### 📜 Table of Contents
+## 📑 Table of Contents
 
-1.  [Features](#-features)
-2.  [Technology Stack](#-technology-stack)
-3.  [Installation & Setup](#-installation--setup)
-4.  [Usage](#-usage)
-5.  [Development & Testing](#-development--testing)
-6.  [Contributing](#-contributing)
-7.  [License](#-license)
-8.  [🤖 AI Agent Directives](#-ai-agent-directives)
+1.  [🚀 Key Features](#-key-features)
+2.  [🛠️ Tech Stack (Apex Standard)](#-tech-stack-apex-standard)
+3.  [🤖 AI Agent Directives](#-ai-agent-directives)
+4.  [⚙️ Setup & Development](#-setup--development)
+5.  [💡 Development Principles](#-development-principles)
+6.  [📜 License](#-license)
 
----
+## 🚀 Key Features
 
-## ✨ Features
+*   **Robust Extraction:** Leverages `yt-dlp` for best-in-class format detection and downloading.
+*   **Streamlit Interface:** Provides an intuitive, responsive web GUI for non-CLI users.
+*   **Format Control:** Allows specification of desired output audio formats (MP3, M4A, WAV).
+*   **Modular Design:** Clear separation of concerns adhering to modern Python best practices.
+*   **CI/CD Ready:** Full GitHub Actions pipeline for automated testing and linting.
 
-*   **Robust Extraction:** Utilizes `yt-dlp` for reliable handling of various YouTube stream formats and metadata.
-*   **Streamlit Interface:** Provides a user-friendly, responsive web application for easy interaction.
-*   **Modern Python Practices:** Enforces strict type hinting, configuration management, and dependency resolution via `uv`.
-*   **Automated Quality Checks:** CI/CD pipeline ensures code quality, coverage, and build integrity on every push.
-*   **Audio Format Selection:** Ability to specify desired output formats (e.g., MP3, M4A).
+## 🛠️ Tech Stack (Apex Standard)
 
-## 🛠 Technology Stack
-
-| Component | Technology | Standard/Version |
+| Category | Technology | Version Constraint |
 | :--- | :--- | :--- |
-| **Primary Language** | Python | 3.10+ |
-| **Web Framework** | Streamlit | Latest Stable |
-| **Core Utility** | `yt-dlp` | Latest |
-| **Package Manager** | `uv` | Latest |
-| **Linting/Formatting**| `Ruff` | Latest |
-| **Testing** | `Pytest` | Latest |
-| **CI/CD** | GitHub Actions | Standard Workflow |
+| Language | Python | 3.10+ |
+| Dependency Management | uv | Latest Stable |
+| Linting/Formatting | Ruff | Strict Enforcement |
+| Testing Framework | Pytest | Comprehensive Coverage |
+| Web Framework | Streamlit | Current Stable |
+| Media Engine | yt-dlp | Latest Stable |
 
-## 🚀 Installation & Setup
-
-Follow these steps to set up the development environment. This project is managed using the **Apex Python Toolchain**.
-
-bash
-# 1. Clone the repository
-git clone https://github.com/chirag127/StreamAudio-YouTube-Downloader-Web-App.git
-cd StreamAudio-YouTube-Downloader-Web-App
-
-# 2. Create and activate a virtual environment using uv
-uv venv
-source .venv/bin/activate  # On Linux/macOS
-# .venv\Scripts\activate    # On Windows
-
-# 3. Install dependencies
-uv install -e .[dev]
-
-# 4. Run initial checks (Linting/Formatting enforced by Ruff)
-ruff check .
-
-
-## ▶️ Usage
-
-To launch the Streamlit application locally:
-
-bash
-streamlit run app.py
-
-
-*(Note: Replace `app.py` with the actual main entry point file name if different.)*
-
-## 🧪 Development & Testing
-
-We adhere strictly to the DRY and SOLID principles. All core logic is unit-tested with Pytest.
-
-| Command | Description |
-| :--- | :--- |
-| `uv run pytest` | Execute all unit and integration tests. |
-| `uv run pytest --cov` | Execute tests with coverage reporting. |
-| `ruff format .` | Enforce code formatting style. |
-| `ruff check .` | Run static analysis and linting checks. |
-
-## 🤝 Contributing
-
-Please refer to the detailed guidelines in `.github/CONTRIBUTING.md`.
-
-## 📄 License
-
-This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License**. See the [LICENSE](LICENSE) file for details.
-
----
+## 🤖 AI Agent Directives
 
 <details>
-<summary>🤖 AI Agent Directives (System Configuration)</summary>
+<summary>Click to view Apex Execution Directives for this Repository</summary>
 
 # SYSTEM: APEX TECHNICAL AUTHORITY & ELITE ARCHITECT (DECEMBER 2025 EDITION)
 
@@ -138,30 +81,77 @@ This project is licensed under the **Creative Commons Attribution-NonCommercial 
     *   **Semantic Correction:** **STRICTLY FORBIDDEN** from executing literal typos. You must **INFER** technical intent based on the project context.
     *   **Logic Anchor:** Treat the `README.md` as the **Single Source of Truth (SSOT)**.
 *   **MANDATORY MCP INSTRUMENTATION:**
-    *   **No Guessing:** Do not hallucinate APIs. Verify external dependencies.
-    *   **Research First:** Use `linkup`/`brave` to search for **December 2025 Industry Standards**, **Security Threats**, and **2026 UI Trends** related to media extraction.
-    *   **Validation:** Use `docfork` to verify *every* external API signature (e.g., `yt-dlp` interface).
-    *   **Reasoning:** Engage `clear-thought-two` to architect robust extraction pipelines *before* writing code.
+    *   **No Guessing:** Do not hallucinate APIs. You must use the installed library features (`yt-dlp` CLI wrapper logic).
+    *   **Research First:** Use `linkup`/`brave` to search for **December 2025 Industry Standards** related to video/audio extraction compliance and security.
+    *   **Validation:** Use `docfork` to verify *every* external command signature (e.g., `yt-dlp --extract-audio`).
+    *   **Reasoning:** Engage `clear-thought-two` to architect complex media processing flows *before* writing code, prioritizing thread safety if applicable.
 
 ---
 
 ## 3. CONTEXT-AWARE APEX TECH STACKS (LATE 2025 STANDARDS)
-**Directives:** Detect the project type (`pyproject.toml` for Python) and apply the corresponding **Apex Toolchain**.
+**Directives:** This repository is a Python-based Media Processing Tool.
 
 *   **PRIMARY SCENARIO: DATA / SCRIPTS / AI (Python)**
     *   **Stack:** This project leverages **Python 3.10+**. Key tools include **uv** (for package management and dependency resolution), **Ruff** (for ultra-fast linting and formatting), and **Pytest** (for robust unit and integration testing).
-    *   **Architecture:** Adheres to a **Modular Monolith** pattern, ensuring clear separation of concerns for UI, service layer, and the `yt-dlp` adapter. Prioritize robust I/O handling.
-    *   **Security:** Critical focus on sanitizing all user-provided input before passing it to external system calls (`yt-dlp`).
+    *   **Architecture:** Adheres to a **Modular Monolith** pattern, ensuring clear separation of concerns for the Streamlit interface and the `yt-dlp` service layer. Prioritize clean API contracts between UI components and the extraction engine.
+    *   **Dependency Focus:** Ensure all interaction with external binaries (`yt-dlp`) is encapsulated and idempotent where possible.
 
-## 4. ARCHITECTURAL PRINCIPLES (MANDATORY ADHERENCE)
-*   **SOLID:** Applied rigorously, especially Single Responsibility Principle (SRP) to isolate UI logic from extraction logic.
-*   **DRY:** Avoid duplication, especially in configuration loading.
-*   **YAGNI:** Only build functionality explicitly required by the core mission (YouTube Audio Extraction).
+---
 
-## 5. VERIFICATION COMMANDS (ENTRY POINTS)
-*   **Lint & Format:** `ruff check .` and `ruff format .`
-*   **Test Suite:** `uv run pytest --cov=./ --cov-report=term-missing --cov-report=xml:coverage.xml`
-*   **Build/Run:** `streamlit run <main_file>.py`
-*   **Environment Setup:** `uv sync`
+## 4. VERIFICATION & EXECUTION COMMANDS
+
+| Command Type | Description | Command |
+| :--- | :--- | :--- |
+| Dependency Setup | Initialize environment and install dependencies | `uv sync` |
+| Formatting/Linting | Run Ruff formatter and linter | `ruff check . && ruff format .` |
+| Unit Testing | Execute all unit tests | `pytest tests/unit` |
+| Full CI Simulation | Run local equivalent of the CI pipeline | `uv run build_and_test` (See scripts below) |
+
+**Apex Verification Strategy:** All code changes **MUST** pass Ruff linting and achieve >90% test coverage on modified logic blocks. Extraction wrappers must handle `KeyError` and connection timeouts gracefully.
 
 </details>
+
+## ⚙️ Setup & Development
+
+This repository mandates the use of `uv` for deterministic dependency management.
+
+### Prerequisites
+
+1.  Python 3.10 or newer installed.
+2.  `yt-dlp` binary installed globally, or configured to be downloaded by the script (Preferred: Ensure installation via `uv sync` if packaged as a dependency).
+
+### Installation
+
+bash
+# 1. Clone the repository
+git clone https://github.com/chirag127/StreamAudio-YouTube-Audio-Extractor-Web-App.git
+cd StreamAudio-YouTube-Audio-Extractor-Web-App
+
+# 2. Create and activate virtual environment (uv handles this implicitly, but good practice)
+# uv venv
+
+# 3. Install dependencies using uv
+# Assumes pyproject.toml defines dependencies correctly
+uv sync
+
+
+### Execution Scripts
+
+| Script Name | Command | Purpose |
+| :--- | :--- | :--- |
+| `start-web` | `uv run start-web` | Launches the Streamlit application |
+| `test-all` | `uv run test-all` | Runs linting, formatting, and all Pytest suites |
+| `check-deps` | `uv check` | Verifies the dependency graph |
+
+## 💡 Development Principles
+
+All development within this repository must strictly adhere to the following architectural tenets:
+
+1.  **SOLID:** Especially Single Responsibility (ensuring extraction logic is separate from UI rendering).
+2.  **DRY:** Avoid duplication, particularly in configuration loading or error message generation.
+3.  **YAGNI:** Implement only the functionality required for robust audio extraction; avoid speculative complexity.
+4.  **Future-Proofing:** Use Python 3.10+ features where they improve clarity and performance (e.g., structural pattern matching, if applicable to logic flow).
+
+## 📜 License
+
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License**. See the [LICENSE](./LICENSE) file for details.
