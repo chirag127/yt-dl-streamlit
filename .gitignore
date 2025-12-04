@@ -1,101 +1,37 @@
-# --- Python Tooling & Caches ---
+# Byte-compiled / optimized / script files
+*.pyc
 __pycache__/
-*.py[cod]
-*$py.class
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.uv_cache/
-.tox/
-.coverage
-.coverage.*
-htmlcov/
-coverage.xml
+*.pyo
+*.pyd
 
-# --- Virtual Environments ---
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak
-venv.bak
-
-# --- Distribution / Packaging ---
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
+# Distribution / packaging
 *.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+.venv/
+venv/
+build/
+dist/
+*.spec
 
-# --- Installer Logs ---
-pip-log.txt
-pip-delete-this-directory.txt
-
-# --- IDE & Editor Config ---
+# IDE / Editor specific files
+.vscode/
 .idea/
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-*.sublime-project
-*.sublime-workspace
+*.iml
+*.ipr
+*.iws
 
-# --- OS Generated Files ---
+# Operating system files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
 
-# --- Secrets & Sensitive Data ---
-# NOTE: It's best practice to use environment variables.
+# Environment files
+.env
 *.env
-.env.*
-secrets.py
-config.ini
-*.pem
-*.key
 
-# --- Application-specific --- 
-# Logs
-*.log
-*.log.*
-logs/
+# Static analysis / testing
+.ruff_cache/
+.pytest_cache/
+htmlcov/
+coverage/
 
-# Database Files
-*.db
-*.sqlite
-*.sqlite3
-
-# Downloaded Media (Crucial for this project)
-/downloads/
-/audio/
-*.mp3
-*.m4a
-*.webm
-*.ogg
-*.flac
-*.wav
-
-# Streamlit
-.streamlit/
-
-# Jupyter Notebook
-.ipynb_checkpoints
+# Streamlit specific files
+.streamlit/local_secrets.toml
